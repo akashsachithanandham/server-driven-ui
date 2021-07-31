@@ -7,6 +7,7 @@ const DoctorCard = () => {
 
   return (
     <div className='doctor-card-wrapper'>
+      
       {/* Doctor header */}
       <div style={{ display: 'flex', alignItems: 'center' }} >
 
