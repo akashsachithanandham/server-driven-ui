@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import contentGenerator from "../../helpers/contnetGenerator";
+import contentGenerator from "../../helpers/contentGenerator";
 import DoctorCard from "../DoctorCard";
 
 const RenderElement = props => {
