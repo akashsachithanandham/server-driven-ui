@@ -28,7 +28,8 @@ const DoctorCard = props => {
     background: 'purple',
     padding: "8px",
     borderRadius: '4px',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: '12px'
   }
 
   const getMarkUp = (content) => {
@@ -38,7 +39,7 @@ const DoctorCard = props => {
   const performRedirect = payload => {
     if (typeof window !== 'undefined') {
       const { url = '' } = payload;
-      // window.location = url;
+      window.location.href = url;
     }
 
     return;
@@ -57,6 +58,9 @@ const DoctorCard = props => {
       case 'pel':
         pushPel(data);
         break;
+
+      default:
+        break;
     }
 
     return;
@@ -74,6 +78,9 @@ const DoctorCard = props => {
         case element_type:
           performAction({ type, data, element_type });
           break;
+
+        default:
+          break;
       }
     })
 
@@ -82,6 +89,9 @@ const DoctorCard = props => {
       switch (element) {
         case element_type:
           performAction({ type, data, element_type });
+          break;
+
+        default:
           break;
       }
     })
@@ -110,18 +120,18 @@ const DoctorCard = props => {
       >
 
         <div style={{ width: "30%" }}>
-          <img src={default_doctor_img} width="100%" />
+          <img src={default_doctor_img} width="100%" alt="Doctor ProfileImage"></img>
         </div>
 
-        <div style={{ width: "50%", paddingLeft: '16px' }}>
+        <div style={{ width: "60%", paddingLeft: '10px' }}>
           <p>{title}</p>
           <p>{subtitle} </p>
           <p dangerouslySetInnerHTML={getMarkUp(header_line_1)} />
           <p>{header_line_2}</p>
         </div>
 
-        <div style={{ width: "20%", textAlign: 'center' }}>
-          <img src={right_icon} height='20px' width='20px' />
+        <div style={{ width: "10%", textAlign: 'center' }}>
+          <img src={right_icon} height='20px' width='20px' alt="right icon" />
         </div>
 
       </div>
