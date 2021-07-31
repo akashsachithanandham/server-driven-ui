@@ -1,4 +1,6 @@
 import React from 'react';
+import { assets_urls } from '../../constants/misc';
+import handleInteractions from '../../helpers/handleInteractions';
 
 const DoctorCard = props => {
 
@@ -19,9 +21,6 @@ const DoctorCard = props => {
     primary_cta_text
   } = content;
 
-  const default_doctor_img = 'https://cdn.icon-icons.com/icons2/2240/PNG/512/doctor_icon_134842.png'
-  const right_icon = 'https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-5/256/navigate-right-icon.png';
-
   const button_style = {
     border: 'none',
     color: 'white',
@@ -36,79 +35,15 @@ const DoctorCard = props => {
     return { __html: content };
   }
 
-  const performRedirect = payload => {
-    if (typeof window !== 'undefined') {
-      const { url = '' } = payload;
-      window.location.href = url;
-    }
-
-    return;
-  }
-
-  const pushPel = payload => {
-    console.warn("PEL Object : ", payload);
-  }
-
-  const performAction = ({ type, data, element_type }) => {
-    switch (type) {
-      case 'redirect':
-        performRedirect(data);
-        break;
-
-      case 'pel':
-        pushPel(data);
-        break;
-
-      default:
-        break;
-    }
-
-    return;
-  }
-
-  const handleInteraction = (props) => {
-    const { interaction_props, element_type } = props;
-    const { actions, events } = interaction_props;
-
-
-    actions.forEach(item => {
-      const { element, data, type } = item;
-
-      switch (element) {
-        case element_type:
-          performAction({ type, data, element_type });
-          break;
-
-        default:
-          break;
-      }
-    })
-
-    events.forEach(item => {
-      const { type, data, element } = item;
-      switch (element) {
-        case element_type:
-          performAction({ type, data, element_type });
-          break;
-
-        default:
-          break;
-      }
-    })
-  }
-
   const primaryCtaClickHandler = (interaction_props, e) => {
-    console.log("primaryCtaClickHandler is clicked ");
     const element_type = 'primary_cta';
-    handleInteraction({ interaction_props, element_type });
+    handleInteractions({ interaction_props, element_type });
   }
 
   const headerSectionClickHandler = (interaction_props) => {
-    console.log("header Section is clicked ");
     const element_type = 'header';
-    handleInteraction({ interaction_props, element_type });
+    handleInteractions({ interaction_props, element_type });
   }
-
 
   return (
     <div className='doctor-card-wrapper'>
@@ -120,7 +55,7 @@ const DoctorCard = props => {
       >
 
         <div style={{ width: "30%" }}>
-          <img src={default_doctor_img} width="100%" alt="Doctor ProfileImage"></img>
+          <img src={assets_urls.default_doctor_img} width="100%" alt="Doctor ProfileImage"></img>
         </div>
 
         <div style={{ width: "60%", paddingLeft: '10px' }}>
@@ -131,7 +66,7 @@ const DoctorCard = props => {
         </div>
 
         <div style={{ width: "10%", textAlign: 'center' }}>
-          <img src={right_icon} height='20px' width='20px' alt="right icon" />
+          <img src={assets_urls.right_icon} height='20px' width='20px' alt="right icon" />
         </div>
 
       </div>
