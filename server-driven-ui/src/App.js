@@ -1,3 +1,4 @@
+import './App.css'
 import React, { useState, useEffect } from 'react';
 import Renderer from './components/renderer';
 
@@ -21,9 +22,7 @@ function App() {
   }, [])
 
   if (!res) {
-    return (
-      <h1>API Failed</h1>
-    )
+    return null;
   }
 
   return (

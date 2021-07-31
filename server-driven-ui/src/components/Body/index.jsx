@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const Body = props => {
   return (
     <div>
-      Hello from Body
+      From Body
     </div>
   )
 }
