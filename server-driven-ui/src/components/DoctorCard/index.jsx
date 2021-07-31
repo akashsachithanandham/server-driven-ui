@@ -19,14 +19,14 @@ const DoctorCard = props => {
     primary_cta_text
   } = content;
 
-  const default_doctor_img = 'https://i.pinimg.com/originals/6a/a0/b1/6aa0b1b78947c24abc8a2f2fba3bcf74.png'
+  const default_doctor_img = 'https://cdn.icon-icons.com/icons2/2240/PNG/512/doctor_icon_134842.png'
   const right_icon = 'https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-5/256/navigate-right-icon.png';
 
   const button_style = {
     border: 'none',
     color: 'white',
     background: 'purple',
-    padding: "8px",
+    padding: "8px 20px",
     borderRadius: '4px',
     fontWeight: 'bold',
     fontSize: '12px'
