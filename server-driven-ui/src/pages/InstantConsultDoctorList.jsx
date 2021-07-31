@@ -20,7 +20,7 @@ const InstantConsultDoctorList = props => {
       <Navigation data={nav} sections={sections} />
       <Body data={body} sections={sections} />
       <Footer data={footer} sections={sections} />
-      <DoctorCard />
+      {/* <DoctorCard /> */}
     </Fragment>
   )
 }
