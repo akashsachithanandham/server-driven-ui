@@ -2,7 +2,7 @@ import React from 'react';
 
 const DoctorCard = props => {
 
-  const { content } = props;
+  const { content, view_props, interaction_props } = props;
 
   const {
     title,
@@ -22,15 +22,92 @@ const DoctorCard = props => {
   const default_doctor_img = 'https://i.pinimg.com/originals/6a/a0/b1/6aa0b1b78947c24abc8a2f2fba3bcf74.png'
   const right_icon = 'https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-5/256/navigate-right-icon.png';
 
+  const button_style = {
+    border: 'none',
+    color: 'white',
+    background: 'purple',
+    padding: "8px",
+    borderRadius: '4px',
+    fontWeight: 'bold'
+  }
+
   const getMarkUp = (content) => {
     return { __html: content };
   }
+
+  const performRedirect = payload => {
+    if (typeof window !== 'undefined') {
+      const { url = '' } = payload;
+      // window.location = url;
+    }
+
+    return;
+  }
+
+  const pushPel = payload => {
+    console.warn("PEL Object : ", payload);
+  }
+
+  const performAction = ({ type, data, element_type }) => {
+    switch (type) {
+      case 'redirect':
+        performRedirect(data);
+        break;
+
+      case 'pel':
+        pushPel(data);
+        break;
+    }
+
+    return;
+  }
+
+  const handleInteraction = (props) => {
+    const { interaction_props, element_type } = props;
+    const { actions, events } = interaction_props;
+
+
+    actions.forEach(item => {
+      const { element, data, type } = item;
+
+      switch (element) {
+        case element_type:
+          performAction({ type, data, element_type });
+          break;
+      }
+    })
+
+    events.forEach(item => {
+      const { type, data, element } = item;
+      switch (element) {
+        case element_type:
+          performAction({ type, data, element_type });
+          break;
+      }
+    })
+  }
+
+  const primaryCtaClickHandler = (interaction_props, e) => {
+    console.log("primaryCtaClickHandler is clicked ");
+    const element_type = 'primary_cta';
+    handleInteraction({ interaction_props, element_type });
+  }
+
+  const headerSectionClickHandler = (interaction_props) => {
+    console.log("header Section is clicked ");
+    const element_type = 'header';
+    handleInteraction({ interaction_props, element_type });
+  }
+
 
   return (
     <div className='doctor-card-wrapper'>
 
       {/* Doctor header */}
-      <div style={{ display: 'flex', alignItems: 'center' }} >
+      <div className='doctor-card-header'
+        style={{ display: 'flex', alignItems: 'center' }}
+        onClick={headerSectionClickHandler.bind(null, interaction_props)}
+      >
 
         <div style={{ width: "30%" }}>
           <img src={default_doctor_img} width="100%" />
@@ -39,14 +116,14 @@ const DoctorCard = props => {
         <div style={{ width: "50%", paddingLeft: '16px' }}>
           <p>{title}</p>
           <p>{subtitle} </p>
-          <div dangerouslySetInnerHTML={getMarkUp(header_line_1)} />
+          <p dangerouslySetInnerHTML={getMarkUp(header_line_1)} />
           <p>{header_line_2}</p>
         </div>
 
         <div style={{ width: "20%", textAlign: 'center' }}>
           <img src={right_icon} height='20px' width='20px' />
         </div>
-        
+
       </div>
 
       {/* General Info */}
@@ -58,7 +135,10 @@ const DoctorCard = props => {
 
       {/* CTA's */}
       <div>
-        <button style={{ border: 'none', color: 'white', background: 'purple', padding: "8px", borderRadius: '4px', fontWeight: 'bold' }}>
+        <button
+          style={button_style}
+          onClick={primaryCtaClickHandler.bind(null, interaction_props)}
+        >
           {primary_cta_text}
         </button>
       </div>
