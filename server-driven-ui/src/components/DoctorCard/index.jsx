@@ -9,18 +9,22 @@ const DoctorCard = props => {
     subtitle,
     header_line_1,
     header_line_2,
-    header_line_2_icon,
+    // header_line_2_icon,
     body_line_1,
-    body_line_1_icon,
+    // body_line_1_icon,
     body_line_2,
-    body_line_2_icon,
+    // body_line_2_icon,
     body_line_3,
-    body_line_3_icon,
+    // body_line_3_icon,
     primary_cta_text
   } = content;
 
   const default_doctor_img = 'https://i.pinimg.com/originals/6a/a0/b1/6aa0b1b78947c24abc8a2f2fba3bcf74.png'
   const right_icon = 'https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-5/256/navigate-right-icon.png';
+
+  const getMarkUp = (content) => {
+    return { __html: content };
+  }
 
   return (
     <div className='doctor-card-wrapper'>
@@ -35,18 +39,19 @@ const DoctorCard = props => {
         <div style={{ width: "50%", paddingLeft: '16px' }}>
           <p>{title}</p>
           <p>{subtitle} </p>
-          <p>{header_line_1}</p>
+          <div dangerouslySetInnerHTML={getMarkUp(header_line_1)} />
           <p>{header_line_2}</p>
         </div>
 
         <div style={{ width: "20%", textAlign: 'center' }}>
           <img src={right_icon} height='20px' width='20px' />
         </div>
+        
       </div>
 
       {/* General Info */}
       <div style={{ margin: '20px 0px' }}>
-        <p>{body_line_1}</p>
+        <p dangerouslySetInnerHTML={getMarkUp(body_line_1)} />
         <p>{body_line_2}</p>
         <p>{body_line_3}</p>
       </div>
