@@ -1,8 +1,10 @@
 import React from 'react';
+import { assets_urls } from '../../constants/misc';
+import handleInteractions from '../../helpers/handleInteractions';
 
 const DoctorCard = props => {
 
-  const { content } = props;
+  const { content, view_props, interaction_props } = props;
 
   const {
     title,
@@ -19,8 +21,15 @@ const DoctorCard = props => {
     primary_cta_text
   } = content;
 
-  const default_doctor_img = 'https://i.pinimg.com/originals/6a/a0/b1/6aa0b1b78947c24abc8a2f2fba3bcf74.png'
-  const right_icon = 'https://icons.iconarchive.com/icons/custom-icon-design/pretty-office-5/256/navigate-right-icon.png';
+  const button_style = {
+    border: 'none',
+    color: 'white',
+    background: 'purple',
+    padding: "8px 20px",
+    borderRadius: '4px',
+    fontWeight: 'bold',
+    fontSize: '12px'
+  }
 
   const getMarkUp = (content) => {
     return { __html: content };
@@ -29,27 +38,40 @@ const DoctorCard = props => {
     fontWeight: 'bolder'
   }
 
+  const primaryCtaClickHandler = (interaction_props, e) => {
+    const element_type = 'primary_cta';
+    handleInteractions({ interaction_props, element_type });
+  }
+
+  const headerSectionClickHandler = (interaction_props) => {
+    const element_type = 'header';
+    handleInteractions({ interaction_props, element_type });
+  }
+
   return (
     <div className='doctor-card-wrapper'>
 
       {/* Doctor header */}
-      <div style={{ display: 'flex', alignItems: 'center' }} >
+      <div className='doctor-card-header'
+        style={{ display: 'flex', alignItems: 'center' }}
+        onClick={headerSectionClickHandler.bind(null, interaction_props)}
+      >
 
         <div style={{ width: "30%" }}>
-          <img src={default_doctor_img} width="100%" />
+          <img src={assets_urls.default_doctor_img} width="100%" alt="Doctor ProfileImage"></img>
         </div>
 
-        <div style={{ width: "50%", paddingLeft: '16px' }}>
+        <div style={{ width: "60%", paddingLeft: '10px' }}>
           <p>{title}</p>
           <p>{subtitle} </p>
           <div dangerouslySetInnerHTML={getMarkUp(header_line_1)} style={bolder} />
           <p>{header_line_2}</p>
         </div>
 
-        <div style={{ width: "20%", textAlign: 'center' }}>
-          <img src={right_icon} height='20px' width='20px' />
+        <div style={{ width: "10%", textAlign: 'center' }}>
+          <img src={assets_urls.right_icon} height='20px' width='20px' alt="right icon" />
         </div>
-        
+
       </div>
 
       {/* General Info */}
@@ -61,7 +83,10 @@ const DoctorCard = props => {
 
       {/* CTA's */}
       <div>
-        <button style={{ border: 'none', color: 'white', background: 'purple', padding: "8px", borderRadius: '4px', fontWeight: 'bold' }}>
+        <button
+          style={button_style}
+          onClick={primaryCtaClickHandler.bind(null, interaction_props)}
+        >
           {primary_cta_text}
         </button>
       </div>

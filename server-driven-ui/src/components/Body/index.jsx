@@ -35,11 +35,15 @@ const Body = props => {
           section_id={section_details.section_id}
         />
       )
+
+    default:
+      break;
   }
 }
 
 Body.propTypes = {
-
+  data: PropTypes.object,
+  sections: PropTypes.array
 }
 
 export default Body

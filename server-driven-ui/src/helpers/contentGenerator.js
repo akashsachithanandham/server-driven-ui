@@ -2,7 +2,7 @@ const contentGenerator = ({ modifiers, content }) => {
   const new_content = { ...content };
 
   for (const [key, value] of Object.entries(modifiers)) {
-    (value || []).map(item => {
+    (value || []).forEach(item => {
       const { element, identifier, display_text } = item;
 
       switch (key) {
@@ -11,6 +11,8 @@ const contentGenerator = ({ modifiers, content }) => {
           new_content[element] = new_content[element].replace(identifier, display_text );
           break;
 
+        default:
+          break;
       }
     })
   }

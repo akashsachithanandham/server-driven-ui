@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import Navigation from '../components/Navigation';
 import Body from '../components/Body';
 import Footer from '../components/Footer';
-import DoctorCard from '../components/DoctorCard';
 
 const InstantConsultDoctorList = props => {
-  const { layout, sections } = props.res || {};
+  const { res } = props;
+  const { layout, sections } = res || {};
 
   const {
     nav,
@@ -20,13 +20,12 @@ const InstantConsultDoctorList = props => {
       <Navigation data={nav} sections={sections} />
       <Body data={body} sections={sections} />
       <Footer data={footer} sections={sections} />
-      {/* <DoctorCard /> */}
     </Fragment>
   )
 }
 
 InstantConsultDoctorList.propTypes = {
-
+  res : PropTypes.object
 }
 
 export default InstantConsultDoctorList;
