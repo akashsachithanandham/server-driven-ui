@@ -7,8 +7,8 @@ const contentGenerator = ({ modifiers, content }) => {
 
       switch (key) {
         case 'bold':
-          console.log(identifier, display_text);
-          new_content[element] = new_content[element].replace(identifier, `<b>${display_text}</b>`);
+          
+          new_content[element] = new_content[element].replace(identifier, display_text );
           break;
 
       }

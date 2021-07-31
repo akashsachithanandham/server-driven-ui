@@ -25,6 +25,9 @@ const DoctorCard = props => {
   const getMarkUp = (content) => {
     return { __html: content };
   }
+  const bolder ={
+    fontWeight: 'bolder'
+  }
 
   return (
     <div className='doctor-card-wrapper'>
@@ -39,7 +42,7 @@ const DoctorCard = props => {
         <div style={{ width: "50%", paddingLeft: '16px' }}>
           <p>{title}</p>
           <p>{subtitle} </p>
-          <div dangerouslySetInnerHTML={getMarkUp(header_line_1)} />
+          <div dangerouslySetInnerHTML={getMarkUp(header_line_1)} style={bolder} />
           <p>{header_line_2}</p>
         </div>
 
@@ -51,7 +54,7 @@ const DoctorCard = props => {
 
       {/* General Info */}
       <div style={{ margin: '20px 0px' }}>
-        <p dangerouslySetInnerHTML={getMarkUp(body_line_1)} />
+        <p dangerouslySetInnerHTML={getMarkUp(body_line_1)} style={bolder}/>
         <p>{body_line_2}</p>
         <p>{body_line_3}</p>
       </div>
