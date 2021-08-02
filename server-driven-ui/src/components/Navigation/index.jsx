@@ -1,27 +1,12 @@
 import React from 'react'
-import performActions from '../../helpers/performActions';
+import handleInteractions from '../../helpers/InteactionHandlers/Navigation/handleInteractions';
 
 const Navigation = props => {
   const { title = 'Choose Doctor', interaction_props, view_props } = props;
 
   const handleBackCtaClick = () => {
-    const { actions = [], events = [] } = interaction_props;
-
-    const arr = actions.concat(events);
-
-    arr.forEach(item => {
-      const { data, type, element } = item;
-      if (element === 'back_cta') {
-        switch (type) {
-          case 'redirect':
-            performActions({ type, data });
-            break;
-          case 'pel':
-            performActions({ type, data });
-            break;
-        }
-      }
-    })
+    const element_type = 'back_cta';
+    handleInteractions({ interaction_props, element_type });
   }
 
   return (
