@@ -1,7 +1,7 @@
 import performReactions from "./performRedirection";
 import pushPel from "./pushPel";
 
-const performActions = ({ type, data, element_type }) => {
+const performActions = ({ type, data }) => {
   switch (type) {
     case 'redirect':
       performReactions(data);

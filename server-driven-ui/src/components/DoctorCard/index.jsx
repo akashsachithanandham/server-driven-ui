@@ -73,6 +73,7 @@ const DoctorCard = props => {
       </div>
 
       <hr className='doctor-card-general-info__separator' />
+
       {/* General Info */}
       <div style={{ margin: '16px 0px' }}>
         <p dangerouslySetInnerHTML={getMarkUp(body_line_1)} />
