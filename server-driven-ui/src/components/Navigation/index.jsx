@@ -5,7 +5,6 @@ const Navigation = props => {
   const { title = 'Choose Doctor', interaction_props, view_props } = props;
 
   const handleBackCtaClick = () => {
-    console.log("Handle back cta click");
     const { actions = [], events = [] } = interaction_props;
 
     const arr = actions.concat(events);
@@ -23,7 +22,6 @@ const Navigation = props => {
         }
       }
     })
-
   }
 
   return (

@@ -1,10 +1,12 @@
 import { Fragment } from "react";
-import contentGenerator from "../../helpers/contentGenerator";
+
 import DoctorCard from "../DoctorCard";
 import Footer from "../Footer";
 import Navigation from "../Navigation";
 import FilterComponent from "../Filters";
 
+
+import contentGenerator from "../../helpers/contentGenerator";
 
 const RenderElement = props => {
   const { sections, section_id } = props;
@@ -17,7 +19,7 @@ const RenderElement = props => {
           const { on_press } = interactions || {};
           console.log("card type: ", card_type)
           if (id === section_id) {
-          const new_content = contentGenerator({ modifiers, content });
+            const new_content = contentGenerator({ modifiers, content });
 
             switch (card_type) {
               case 'card_1':
