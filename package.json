@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-modal": "^3.14.3",
     "react-visibility-sensor": "^5.1.1"
   }
 }
