@@ -8,7 +8,7 @@ const performActions = ({ type, data }) => {
       break;
 
     case 'pel':
-      pushPel(data);
+      pushPel({ data });
       break;
 
     default:

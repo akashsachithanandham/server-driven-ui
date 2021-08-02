@@ -1,3 +1,5 @@
+const url = 'https://run.mocky.io/v3/a4b4ab47-eabc-4ad6-81d8-edd382380eed';
+
 const route_map = {
   instant_choice_doctor_list: 'instant_choice_doctor_list',
   instant_choice_doctor_profile: 'instant_choice_doctor_profile'
@@ -14,6 +16,7 @@ const assets_urls = {
 }
 
 export {
+  url,
   route_map,
   section_type,
   assets_urls

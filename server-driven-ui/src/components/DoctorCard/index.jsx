@@ -1,55 +1,62 @@
 import React from 'react';
+import VisibilitySensor from 'react-visibility-sensor';
+
 import { assets_urls } from '../../constants/misc';
 import handleInteractions from '../../helpers/InteactionHandlers/DoctorCard/handleInteractions';
 
-import VisibilitySensor from 'react-visibility-sensor';
-
 const DoctorCard = props => {
-
-  const { content, view_props, interaction_props } = props;
-
+  const { content, view_props, interaction_props, id = '' } = props;
   const {
     title,
     subtitle,
     header_line_1,
     header_line_2,
-    // header_line_2_icon,
     body_line_1,
-    // body_line_1_icon,
     body_line_2,
-    // body_line_2_icon,
     body_line_3,
-    // body_line_3_icon,
     primary_cta_text
   } = content;
 
-  const button_style = {
-    border: 'none',
-    color: 'white',
-    background: '#28328c',
-    padding: "8px 20px",
-    borderRadius: '4px',
-    fontWeight: 'bold',
-    fontSize: '12px'
-  }
+  let is_card_viewed = false;
 
   const getMarkUp = (content) => {
     return { __html: content };
   }
 
-
   const primaryCtaClickHandler = (interaction_props, e) => {
-    const element_type = 'primary_cta';
-    handleInteractions({ interaction_props, element_type });
+    const interaction_payload = {
+      interaction_props,
+      element_type: 'primary_cta',
+      interaction_type: 'interacted'
+    }
+    handleInteractions(interaction_payload);
   }
 
   const headerSectionClickHandler = (interaction_props) => {
-    const element_type = 'header';
-    handleInteractions({ interaction_props, element_type });
+    const interaction_payload = {
+      interaction_props,
+      element_type: 'header',
+      interaction_type: 'interacted'
+    }
+    handleInteractions(interaction_payload);
   }
 
-  const handleCardViewEvent = () => {
-    console.log("cardViewEvent Called !!!");
+  const handleCardViewEvent = (isVisible) => {
+    if (isVisible && !is_card_viewed) {
+
+      is_card_viewed = true;
+      const view_payload = {
+        interaction_props: view_props,
+        element_type: 'card_1',
+        interaction_type: 'Viewed'
+      }
+
+      console.warn(id, "View event triggered");
+      handleInteractions(view_payload);
+      return;
+    }
+    
+    return;
   }
 
   const sensor_props = {
@@ -76,10 +83,10 @@ const DoctorCard = props => {
           </div>
 
           <div style={{ width: "60%", paddingLeft: '10px' }}>
-            <p>{title}</p>
+            <p className='title'>{title}</p>
             <p>{subtitle} </p>
             <p dangerouslySetInnerHTML={getMarkUp(header_line_1)} />
-            <p>{header_line_2}</p>
+            <p dangerouslySetInnerHTML={getMarkUp(header_line_2)} />
           </div>
 
           <div style={{ width: "10%", textAlign: 'center' }}>
@@ -90,17 +97,15 @@ const DoctorCard = props => {
 
         <hr className='doctor-card-general-info__separator' />
 
-        {/* General Info */}
-        <div style={{ margin: '16px 0px' }}>
-          <p dangerouslySetInnerHTML={getMarkUp(body_line_1)} />
+        <div className='general-info'>
+          <p>{body_line_1}</p>
           <p>{body_line_2}</p>
           <p>{body_line_3}</p>
         </div>
 
-        {/* CTA's */}
-        <div>
+        <div className='cta'>
           <button
-            style={button_style}
+            className='consult-cta'
             onClick={primaryCtaClickHandler.bind(null, interaction_props)}
           >
             {primary_cta_text}
