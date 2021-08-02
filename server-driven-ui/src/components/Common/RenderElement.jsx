@@ -3,6 +3,8 @@ import { Fragment } from "react";
 import DoctorCard from "../DoctorCard";
 import Footer from "../Footer";
 import Navigation from "../Navigation";
+import FilterComponent from "../Filters";
+
 
 import contentGenerator from "../../helpers/contentGenerator";
 
@@ -15,7 +17,7 @@ const RenderElement = props => {
         sections.map((item, index) => {
           const { id, section: { id: card_type, content, modifiers, interactions } } = item;
           const { on_press } = interactions || {};
-
+          console.log("card type: ", card_type)
           if (id === section_id) {
             const new_content = contentGenerator({ modifiers, content });
 
@@ -37,7 +39,15 @@ const RenderElement = props => {
                     interaction_props={on_press}
                   />
                 )
-
+              
+              case 'filter_1':
+                return(
+                  <FilterComponent
+                  key={`${index}+${card_type}`}
+                  content={new_content}
+                  interaction_props={on_press}
+                  />
+                )
               case 'footer':
                 return (
                   <Footer
