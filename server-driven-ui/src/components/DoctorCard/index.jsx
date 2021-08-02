@@ -1,7 +1,10 @@
 import React from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
 
-import { assets_urls } from '../../constants/misc';
+import Cta from './Cta';
+import GeneralInfo from './GeneralInfo';
+import Header from './Header';
+
 import handleInteractions from '../../helpers/InteactionHandlers/DoctorCard/handleInteractions';
 
 const DoctorCard = props => {
@@ -19,16 +22,13 @@ const DoctorCard = props => {
 
   let is_card_viewed = false;
 
-  const getMarkUp = (content) => {
-    return { __html: content };
-  }
-
   const primaryCtaClickHandler = (interaction_props, e) => {
     const interaction_payload = {
       interaction_props,
       element_type: 'primary_cta',
       interaction_type: 'interacted'
     }
+
     handleInteractions(interaction_payload);
   }
 
@@ -38,24 +38,25 @@ const DoctorCard = props => {
       element_type: 'header',
       interaction_type: 'interacted'
     }
+
     handleInteractions(interaction_payload);
   }
 
   const handleCardViewEvent = (isVisible) => {
     if (isVisible && !is_card_viewed) {
-
       is_card_viewed = true;
+
       const view_payload = {
         interaction_props: view_props,
         element_type: 'card_1',
         interaction_type: 'Viewed'
       }
 
-      console.warn(id, "View event triggered");
+      console.warn(id, 'View event triggered');
       handleInteractions(view_payload);
       return;
     }
-    
+
     return;
   }
 
@@ -68,49 +69,37 @@ const DoctorCard = props => {
     scrollCheck: true
   }
 
+  const header_props = {
+    title: title,
+    subtitle: subtitle,
+    header_line_1: header_line_1,
+    header_line_2: header_line_2
+  }
+
+  const general_info_props = {
+    body_line_1: body_line_1,
+    body_line_2: body_line_2,
+    body_line_3: body_line_3
+  }
+
+  const cta_props = {
+    primary_cta_text: primary_cta_text
+  }
+
   return (
     <VisibilitySensor {...sensor_props}>
       <div className='doctor-card-wrapper'>
-
-        {/* Doctor header */}
-        <div className='doctor-card-header'
-          style={{ display: 'flex', alignItems: 'center' }}
-          onClick={headerSectionClickHandler.bind(null, interaction_props)}
-        >
-
-          <div style={{ width: "30%" }}>
-            <img src={assets_urls.default_doctor_img} width="100%" alt="Doctor ProfileImage"></img>
-          </div>
-
-          <div style={{ width: "60%", paddingLeft: '10px' }}>
-            <p className='title'>{title}</p>
-            <p>{subtitle} </p>
-            <p dangerouslySetInnerHTML={getMarkUp(header_line_1)} />
-            <p dangerouslySetInnerHTML={getMarkUp(header_line_2)} />
-          </div>
-
-          <div style={{ width: "10%", textAlign: 'center' }}>
-            <img src={assets_urls.right_icon} height='20px' width='20px' alt="right icon" />
-          </div>
-
-        </div>
-
+        <Header
+          content={header_props}
+          handleClick={headerSectionClickHandler.bind(null, interaction_props)}
+        />
         <hr className='doctor-card-general-info__separator' />
+        <GeneralInfo content={general_info_props} />
+        <Cta
+          content={cta_props}
+          handleClick={primaryCtaClickHandler.bind(null, interaction_props)}
+        />
 
-        <div className='general-info'>
-          <p>{body_line_1}</p>
-          <p>{body_line_2}</p>
-          <p>{body_line_3}</p>
-        </div>
-
-        <div className='cta'>
-          <button
-            className='consult-cta'
-            onClick={primaryCtaClickHandler.bind(null, interaction_props)}
-          >
-            {primary_cta_text}
-          </button>
-        </div>
       </div>
     </VisibilitySensor>
   )
