@@ -4,3 +4,39 @@
   padding : 12px;
   border-radius: 8px;
 }
+
+.body-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  background-color: #28328c;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.navigation {
+  background-color: #28328c;
+  color: white;
+  padding: 20px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.navigation .title {
+  text-align: center;
+  width: 80%;
+}
+
+.navigation .back-cta {
+  text-align: center;
+  width: 10%;
+}
+
+.doctor-card-general-info__separator {
+  background-color: rgb(131, 125, 125);
+  border-top: 0px;
+}

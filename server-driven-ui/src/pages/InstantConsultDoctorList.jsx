@@ -25,7 +25,7 @@ const InstantConsultDoctorList = props => {
 }
 
 InstantConsultDoctorList.propTypes = {
-  res : PropTypes.object
+  res: PropTypes.object
 }
 
 export default InstantConsultDoctorList;

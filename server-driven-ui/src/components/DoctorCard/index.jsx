@@ -24,7 +24,7 @@ const DoctorCard = props => {
   const button_style = {
     border: 'none',
     color: 'white',
-    background: 'purple',
+    background: '#28328c',
     padding: "8px 20px",
     borderRadius: '4px',
     fontWeight: 'bold',
@@ -34,9 +34,7 @@ const DoctorCard = props => {
   const getMarkUp = (content) => {
     return { __html: content };
   }
-  const bolder ={
-    fontWeight: 'bolder'
-  }
+
 
   const primaryCtaClickHandler = (interaction_props, e) => {
     const element_type = 'primary_cta';
@@ -64,7 +62,7 @@ const DoctorCard = props => {
         <div style={{ width: "60%", paddingLeft: '10px' }}>
           <p>{title}</p>
           <p>{subtitle} </p>
-          <div dangerouslySetInnerHTML={getMarkUp(header_line_1)} style={bolder} />
+          <p dangerouslySetInnerHTML={getMarkUp(header_line_1)} />
           <p>{header_line_2}</p>
         </div>
 
@@ -74,9 +72,10 @@ const DoctorCard = props => {
 
       </div>
 
+      <hr className='doctor-card-general-info__separator' />
       {/* General Info */}
-      <div style={{ margin: '20px 0px' }}>
-        <p dangerouslySetInnerHTML={getMarkUp(body_line_1)} style={bolder}/>
+      <div style={{ margin: '16px 0px' }}>
+        <p dangerouslySetInnerHTML={getMarkUp(body_line_1)} />
         <p>{body_line_2}</p>
         <p>{body_line_3}</p>
       </div>
