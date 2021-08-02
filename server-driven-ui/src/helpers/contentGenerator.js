@@ -1,4 +1,4 @@
-const contentGenerator = ({ modifiers, content }) => {
+const contentGenerator = ({ modifiers = {}, content = {} }) => {
   const new_content = { ...content };
 
   for (const [key, value] of Object.entries(modifiers)) {

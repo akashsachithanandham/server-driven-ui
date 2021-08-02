@@ -1,10 +1,10 @@
-import performReactions from "./performRedirection";
+import performRedirection from "./performRedirection";
 import pushPel from "./pushPel";
 
 const performActions = ({ type, data }) => {
   switch (type) {
     case 'redirect':
-      performReactions(data);
+      performRedirection(data);
       break;
 
     case 'pel':

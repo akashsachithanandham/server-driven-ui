@@ -8,7 +8,7 @@ const BottomSheetModal = props => {
       <div className='bottom-sheet-modal-wrapper__content'>
 
         <div className='bottom-sheet-modal-header'>
-
+          
         </div>
 
         <div className='bottom-sheet-modal-body'>

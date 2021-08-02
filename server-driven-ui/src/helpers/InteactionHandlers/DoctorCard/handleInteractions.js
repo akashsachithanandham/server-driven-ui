@@ -1,4 +1,4 @@
-import performActions from "./performActions";
+import performActions from "../../performActions";
 
 const handleInteractions = (props) => {
   const { interaction_props, element_type } = props;

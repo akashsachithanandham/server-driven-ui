@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types';
 
-import Navigation from '../components/Navigation';
-import Body from '../components/Body';
+import LayoutRenderer from '../components/Common/LayoutRenderer';
 import Footer from '../components/Footer';
 
 const InstantConsultDoctorList = props => {
@@ -17,9 +16,19 @@ const InstantConsultDoctorList = props => {
 
   return (
     <Fragment>
-      <Navigation data={nav} sections={sections} />
-      <Body data={body} sections={sections} />
-      <Footer data={footer} sections={sections} />
+
+      {/* Nav  */}
+      <LayoutRenderer data={nav} sections={sections} />
+
+      {/* Body */}
+      <LayoutRenderer data={body} sections={sections} />
+
+      {/* Footer */}
+      <LayoutRenderer data={footer} sections={sections} />
+
+      {/* Since there is no data to render footer hence hard-coding it  */}
+      <Footer />
+
     </Fragment>
   )
 }

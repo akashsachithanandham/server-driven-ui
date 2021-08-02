@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
+import RenderElement from './RenderElement';
 import { section_type } from '../../constants/misc';
-import RenderElement from '../Common/RenderElement';
 
 const Body = props => {
   const { data, sections } = props;

@@ -1,6 +1,8 @@
 import { Fragment } from "react";
 import contentGenerator from "../../helpers/contentGenerator";
 import DoctorCard from "../DoctorCard";
+import Footer from "../Footer";
+import Navigation from "../Navigation";
 
 const RenderElement = props => {
   const { sections, section_id } = props;
@@ -13,14 +15,31 @@ const RenderElement = props => {
           const { on_press } = interactions || {};
 
           if (id === section_id) {
+          const new_content = contentGenerator({ modifiers, content });
+
             switch (card_type) {
               case 'card_1':
-                const new_content = contentGenerator({ modifiers, content })
                 return (
                   <DoctorCard
                     key={`${index}+${card_type}`}
                     content={new_content}
                     interaction_props={on_press}
+                  />
+                )
+
+              case 'navigation':
+                return (
+                  <Navigation
+                    key={`${index}+${card_type}`}
+                    content={new_content}
+                    interaction_props={on_press}
+                  />
+                )
+
+              case 'footer':
+                return (
+                  <Footer
+                    key={`${index}+${card_type}`}
                   />
                 )
 

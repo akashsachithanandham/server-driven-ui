@@ -1,10 +1,10 @@
-const performReactions = payload => {
+const performRedirection = payload => {
   if (typeof window !== 'undefined') {
     const { url = '' } = payload;
-    window.location.href = url;
+      window.location.href = `https://www.${url}`;
   }
 
   return;
 }
 
-export default performReactions;
+export default performRedirection;
