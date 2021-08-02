@@ -4,6 +4,7 @@ import DoctorCard from "../DoctorCard";
 import Footer from "../Footer";
 import Navigation from "../Navigation";
 import FilterComponent from "../Filters";
+import InfoComponent from "../Info";
 
 
 import contentGenerator from "../../helpers/contentGenerator";
@@ -30,7 +31,7 @@ const RenderElement = props => {
                     interaction_props={on_press}
                   />
                 )
-
+                  
               case 'navigation':
                 return (
                   <Navigation
@@ -54,7 +55,13 @@ const RenderElement = props => {
                     key={`${index}+${card_type}`}
                   />
                 )
-
+              case 'info':
+                return (
+                  <InfoComponent
+                  key={`${index}+${card_type}`}
+                  content={new_content}
+                  />
+                )
               default:
                 return null;
             }
