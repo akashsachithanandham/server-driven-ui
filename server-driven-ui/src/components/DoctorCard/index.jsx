@@ -23,16 +23,6 @@ const DoctorCard = props => {
     primary_cta_text
   } = content;
 
-  const button_style = {
-    border: 'none',
-    color: 'white',
-    background: '#28328c',
-    padding: "8px 20px",
-    borderRadius: '4px',
-    fontWeight: 'bold',
-    fontSize: '12px'
-  }
-
   const getMarkUp = (content) => {
     return { __html: content };
   }
@@ -62,52 +52,50 @@ const DoctorCard = props => {
   }
 
   return (
-    <VisibilitySensor {...sensor_props}>
-      <div className='doctor-card-wrapper'>
+    // <VisibilitySensor {...sensor_props}>
+    <div className='doctor-card-wrapper'>
 
-        {/* Doctor header */}
-        <div className='doctor-card-header'
-          style={{ display: 'flex', alignItems: 'center' }}
-          onClick={headerSectionClickHandler.bind(null, interaction_props)}
-        >
+      {/* Doctor header */}
+      <div className='doctor-card-header'
+        style={{ display: 'flex', alignItems: 'center' }}
+        onClick={headerSectionClickHandler.bind(null, interaction_props)}
+      >
 
-          <div style={{ width: "30%" }}>
-            <img src={assets_urls.default_doctor_img} width="100%" alt="Doctor ProfileImage"></img>
-          </div>
-
-          <div style={{ width: "60%", paddingLeft: '10px' }}>
-            <p>{title}</p>
-            <p>{subtitle} </p>
-            <p dangerouslySetInnerHTML={getMarkUp(header_line_1)} />
-            <p>{header_line_2}</p>
-          </div>
-
-          <div style={{ width: "10%", textAlign: 'center' }}>
-            <img src={assets_urls.right_icon} height='20px' width='20px' alt="right icon" />
-          </div>
-
+        <div style={{ width: "30%" }}>
+          <img src={assets_urls.default_doctor_img} width="100%" alt="Doctor ProfileImage"></img>
         </div>
 
-        <hr className='doctor-card-general-info__separator' />
-
-        {/* General Info */}
-        <div style={{ margin: '16px 0px' }}>
-          <p dangerouslySetInnerHTML={getMarkUp(body_line_1)} />
-          <p>{body_line_2}</p>
-          <p>{body_line_3}</p>
+        <div style={{ width: "60%", paddingLeft: '10px' }}>
+          <p className='title'>{title}</p>
+          <p>{subtitle} </p>
+          <p dangerouslySetInnerHTML={getMarkUp(header_line_1)} />
+          <p dangerouslySetInnerHTML={getMarkUp(header_line_2)} />
         </div>
 
-        {/* CTA's */}
-        <div>
-          <button
-            style={button_style}
-            onClick={primaryCtaClickHandler.bind(null, interaction_props)}
-          >
-            {primary_cta_text}
-          </button>
+        <div style={{ width: "10%", textAlign: 'center' }}>
+          <img src={assets_urls.right_icon} height='20px' width='20px' alt="right icon" />
         </div>
+
       </div>
-    </VisibilitySensor>
+
+      <hr className='doctor-card-general-info__separator' />
+
+      <div className='general-info'>
+        <p>{body_line_1}</p>
+        <p>{body_line_2}</p>
+        <p>{body_line_3}</p>
+      </div>
+
+      <div className='cta'>
+        <button
+          className='consult-cta'
+          onClick={primaryCtaClickHandler.bind(null, interaction_props)}
+        >
+          {primary_cta_text}
+        </button>
+      </div>
+    </div>
+    // </VisibilitySensor>
   )
 }
 
