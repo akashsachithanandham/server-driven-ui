@@ -3,42 +3,27 @@ import PropTypes from 'prop-types';
 
 import { section_type } from '../../constants/misc';
 import RenderElement from '../Common/RenderElement';
+import DoctorComponent  from './DoctorComponent';
+import FilterComponent from '../Filters';
 
 const Body = props => {
   const { data, sections } = props;
 
-  const { type, section_details } = data;
+  let filter_section = sections.find((section)=>{
+    if(section.id === "filters"){
+      return section;
+    }
+  })
+  return(
+    <div>
+      <FilterComponent data= {data} sections = {filter_section} />
 
-  switch (type) {
-    case section_type.multi_section:
-      return (
-        <Fragment>
-          {
-            section_details.map((item, index) => {
-              const { section_id } = item;
-              return (
-                <RenderElement
-                  key={`${index}+${section_id}`}
-                  sections={sections}
-                  section_id={section_id}
-                />
-              )
-            })
-          }
-        </Fragment>
-      )
-
-    case section_type.single_section:
-      return (
-        <RenderElement
-          sections={sections}
-          section_id={section_details.section_id}
-        />
-      )
-
-    default:
-      break;
-  }
+      <DoctorComponent data= {data} sections={sections}/>
+    </div>
+  );
+  
+  
+  
 }
 
 Body.propTypes = {
