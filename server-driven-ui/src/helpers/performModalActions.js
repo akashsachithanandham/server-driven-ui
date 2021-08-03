@@ -10,10 +10,9 @@ const performActions = (action_payload) => {
                     cta_clicked: action_payload.cta_clicked,
                     openModal: action_payload.openModal,
                 }
-                console.log("action_payload: ", action_payload)
                 performModalOpen(payload)
             }
-            else {
+            else if (action_payload.behaviour === "close"){
                 let payload = {
                     closeModal: action_payload.closeModal,
                 }
