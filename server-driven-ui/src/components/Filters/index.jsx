@@ -18,21 +18,22 @@ export const FilterComponent = (props) => {
     }
     let { content, interaction_props } = props;
 
-    const ctaClickHandler = (interaction_props, behaviour, element_type, e) => {
+    const ctaClickHandler = (payload, e) => {
         let cta_clicked = 1;
-        if (element_type === "first_cta") {
+        if (payload.element_type === "first_cta") {
             cta_clicked = 1;
         }
-        else if (element_type === "second_cta") {
+        else if (payload.element_type === "second_cta") {
             cta_clicked = 2;
         }
+        let interaction_props = payload.interaction_props
         const interaction_payload = {
             openModal,
             closeModal,
             cta_clicked: cta_clicked,
             interaction_props,
-            behaviour: behaviour,
-            element_type: element_type,
+            behaviour: payload.behaviour,
+            element_type: payload.element_type,
             interaction_type: 'interacted'
         }
         handleInteractions(interaction_payload);
@@ -57,7 +58,7 @@ export const FilterComponent = (props) => {
         else if (whichCta === 2) {
             request_from = "second_cta"
         }
-        ctaClickHandler(interaction_props, "close", request_from)
+        ctaClickHandler({interaction_props:interaction_props, behaviour: "close", element_type:request_from})
     }
 
     return (
@@ -65,12 +66,12 @@ export const FilterComponent = (props) => {
             <div className="filterCTAs">
                 <div className="filterCTA">
 
-                    <button onClick={(e) => ctaClickHandler(interaction_props, "open", "first_cta", e)}>
+                    <button onClick={(e) => ctaClickHandler({interaction_props:interaction_props,behaviour: "open",element_type: "first_cta"}, e)}>
                         {content.first_cta_text}
                     </button>
                 </div>
                 <div className="filterCTA">
-                    <button onClick={(e) => ctaClickHandler(interaction_props, "open", "second_cta", e)}>
+                    <button onClick={(e) => ctaClickHandler({interaction_props:interaction_props,behaviour: "open",element_type: "second_cta"}, e)}>
                         {content.second_cta_text}</button>
                 </div>
             </div>
