@@ -102,8 +102,10 @@ export const FilterComponent = (props) => {
                 style={customStyles}
                 contentLabel="Example Modal"
             >
-                <h2>Filter Modal</h2>
-                <button className="modalClose" onClick={(e) => handleClose(interaction_props, e)}>close</button>
+                <div className='modal-wrapper'>
+                <p>Modal</p>
+                <button className="modalClose" onClick={(e) => handleClose(interaction_props, e)}> ❌ </button>
+                </div>
                 <div>{whichCta} CTA</div>
             </Modal>
         </div>

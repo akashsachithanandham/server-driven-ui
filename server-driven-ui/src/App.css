@@ -133,3 +133,11 @@
 .modalClose{
   float:right
 }
+
+.modal-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid grey;
+}
