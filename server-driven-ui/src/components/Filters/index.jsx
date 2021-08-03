@@ -105,7 +105,7 @@ export const FilterComponent = (props) => {
             >
                 <div className='modal-wrapper'>
                 <p>Modal</p>
-                <p className="modalClose" onClick={(e) => handleClose(interaction_props, e)}> ❌</p>
+                <div className="modalClose" onClick={(e) => handleClose(interaction_props, e)}> ❌</div>
                 </div>
                 <div className='modal-body'>
                     {whichCta} CTA
