@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import handleInteractions from '../../helpers/InteactionHandlers/Filters/handleInteractions';
 import Modal from 'react-modal'
+
 export const FilterComponent = (props) => {
+
     const [isopen, setIsopen] = useState(false);
-    const [whichCta, setWhichCta] = useState("first");
+    const [whichCta, setWhichCta] = useState(null);
 
+    // modal operations
     const openModal = (cta, e) => {
-        console.log("clicked cta ", cta);
-
         setIsopen(true);
         setWhichCta(cta);
     }
-    const closeModal = (e) => {
 
+    const closeModal = (e) => {
         setIsopen(false);
         setWhichCta(null);
     }
+
     let { content, interaction_props } = props;
 
     const ctaClickHandler = (payload, e) => {
@@ -27,6 +29,7 @@ export const FilterComponent = (props) => {
             cta_clicked = 2;
         }
         let interaction_props = payload.interaction_props
+
         const interaction_payload = {
             openModal,
             closeModal,
@@ -38,6 +41,33 @@ export const FilterComponent = (props) => {
         }
         handleInteractions(interaction_payload);
     }
+
+
+    const handleClose = (interaction_props) => {
+        let element_type = "first_cta"
+        if (whichCta === 1) {
+            element_type = "first_cta"
+        }
+        else if (whichCta === 2) {
+            element_type = "second_cta"
+        }
+        let ctaClickPayload = {
+            interaction_props: interaction_props,
+            behaviour: "close",
+            element_type: element_type
+        }
+        ctaClickHandler(ctaClickPayload);
+    }
+
+    const handleOpen = (interaction_props, element_type, e) => {
+        let ctaClickPayload = {
+            interaction_props: interaction_props,
+            behaviour: "open",
+            element_type: element_type
+        }
+        ctaClickHandler(ctaClickPayload, e);
+    }
+
     const customStyles = {
         content: {
             top: '50%',
@@ -50,28 +80,18 @@ export const FilterComponent = (props) => {
             width: '50%'
         },
     };
-    const handleClose = (interaction_props) => {
-        let request_from = "first_cta"
-        if (whichCta === 1) {
-            request_from = "first_cta"
-        }
-        else if (whichCta === 2) {
-            request_from = "second_cta"
-        }
-        ctaClickHandler({interaction_props:interaction_props, behaviour: "close", element_type:request_from})
-    }
+
 
     return (
         <div>
             <div className="filterCTAs">
                 <div className="filterCTA">
-
-                    <button onClick={(e) => ctaClickHandler({interaction_props:interaction_props,behaviour: "open",element_type: "first_cta"}, e)}>
+                    <button onClick={(e) => handleOpen(interaction_props, "first_cta", e)}>
                         {content.first_cta_text}
                     </button>
                 </div>
                 <div className="filterCTA">
-                    <button onClick={(e) => ctaClickHandler({interaction_props:interaction_props,behaviour: "open",element_type: "second_cta"}, e)}>
+                    <button onClick={(e) => handleOpen(interaction_props, "second_cta", e)}>
                         {content.second_cta_text}</button>
                 </div>
             </div>
@@ -82,7 +102,7 @@ export const FilterComponent = (props) => {
                 style={customStyles}
                 contentLabel="Example Modal"
             >
-                <h2>Hello</h2>
+                <h2>Filter Modal</h2>
                 <button className="modalClose" onClick={(e) => handleClose(interaction_props, e)}>close</button>
                 <div>{whichCta} CTA</div>
             </Modal>
