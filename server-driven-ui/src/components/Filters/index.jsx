@@ -50,6 +50,8 @@ export const FilterComponent = (props) => {
           bottom: 'auto',
           marginRight: '-50%',
           transform: 'translate(-50%, -50%)',
+          height: '50%',
+          width: '50%'
         },
       };
    
@@ -75,7 +77,7 @@ export const FilterComponent = (props) => {
             contentLabel="Example Modal"
             >
                 <h2>Hello</h2>
-        <button onClick={firstCtaClickHandler.bind(null, interaction_props,"close")}>close</button>
+        <button className="modalClose" onClick={firstCtaClickHandler.bind(null, interaction_props,"close")}>close</button>
         <div>I am a modal</div>
             </Modal>
         </div>

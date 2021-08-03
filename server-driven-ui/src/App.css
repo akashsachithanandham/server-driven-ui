@@ -125,3 +125,11 @@
   font-size: 18px;
   margin-top: 8px;
 }
+
+/**************************
+| Modals             |
+**************************/
+
+.modalClose{
+  float:right
+}
