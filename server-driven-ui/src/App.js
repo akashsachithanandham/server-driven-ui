@@ -7,7 +7,6 @@ function App() {
   const [res, setRes] = useState(null);
 
   useEffect(() => {
-
     // Fetching mock data
     const fetchMockData = async () => {
       try {

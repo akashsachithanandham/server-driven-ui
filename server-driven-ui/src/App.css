@@ -1,3 +1,12 @@
+
+.u-d-flex {
+  display: flex;
+}
+
+.u-al-center {
+  align-items: center;
+}
+
 .body-wrapper {
   display: flex;
   flex-direction: column;
@@ -103,16 +112,16 @@
 | Headers                 |
 **************************/
 
+.header-section {
+  padding: 20px;
+  border: 1px lightgray solid;
+}
+
 .header{
-  font-weight: bolder;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 30px;
-  margin-left: 30px;
-  margin-top:15px;
-  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 600;
 }
 .sub-header{
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 20px;
-  margin-left: 45px;
+  font-size: 18px;
+  margin-top: 8px;
 }
