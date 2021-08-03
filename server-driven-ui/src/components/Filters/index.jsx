@@ -77,7 +77,8 @@ export const FilterComponent = (props) => {
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
             height: '50%',
-            width: '50%'
+            width: '80%',
+            padding : '0px'
         },
     };
 
@@ -104,9 +105,11 @@ export const FilterComponent = (props) => {
             >
                 <div className='modal-wrapper'>
                 <p>Modal</p>
-                <button className="modalClose" onClick={(e) => handleClose(interaction_props, e)}> ❌ </button>
+                <p className="modalClose" onClick={(e) => handleClose(interaction_props, e)}> ❌</p>
                 </div>
-                <div>{whichCta} CTA</div>
+                <div className='modal-body'>
+                    {whichCta} CTA
+                </div>
             </Modal>
         </div>
     )

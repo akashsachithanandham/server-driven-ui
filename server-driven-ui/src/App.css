@@ -137,7 +137,14 @@
 .modal-wrapper {
   display: flex;
   justify-content: space-between;
+  text-align: center;
   margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid grey;
+  padding: 20px;
+  border-bottom: 1px solid lightgray;
+  font-size: 18px;
+}
+
+.modal-body {
+  padding : 20px;
+  text-align: center;
 }
