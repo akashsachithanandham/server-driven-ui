@@ -1,38 +1,150 @@
-.App {
+
+.u-d-flex {
+  display: flex;
+}
+
+.u-al-center {
+  align-items: center;
+}
+
+.body-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/**************************
+| Footer                  |
+**************************/
+
+.footer {
+  background-color: #28328c;
+  color: white;
+  padding: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/**************************
+| Navigation              |
+**************************/
+
+.navigation {
+  background-color: #28328c;
+  color: white;
+  padding: 20px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navigation .title {
+  text-align: center;
+  width: 80%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navigation .back-cta {
+  text-align: center;
+  width: 10%;
+}
+
+
+/**************************
+| Filters                 |
+**************************/
+
+.filterCTAs {
+  border: 3px solid grey;
+  overflow: hidden; 
+  padding:10px; 
+  margin-top:10px; 
+  height:auto; 
+  background-color:#f9f9f9;
+}
+
+.filterCTA {
+  float: left;
+  margin-left: 15px;
+  margin-right: 15px;
+}  
+
+/**************************
+| Doctor Card             |
+**************************/
+
+.doctor-card-wrapper {
+  margin: 20px;
+  box-shadow: 2px 3px 20px rgba(0,0,0,0.25);
+  padding : 12px;
+  border-radius: 8px;
+  line-height: 1.2;
+}
+
+.doctor-card-wrapper .title {
+  font-size: 20px;
+  font-weight: 650;
+  letter-spacing: 1.6;
+  line-height: 1.2;
+}
+
+.doctor-card-wrapper .general-info {
+  margin: 16px 0px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 3px; 
+}
+
+.doctor-card-wrapper .consult-cta {
+  border: none;
   color: white;
+  background: #28328c;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
 }
 
-.App-link {
-  color: #61dafb;
+.doctor-card-general-info__separator {
+  background-color: rgb(131, 125, 125);
+  border-top: 0px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/**************************
+| Headers                 |
+**************************/
+
+.header-section {
+  padding: 20px;
+  border: 1px lightgray solid;
+}
+
+.header{
+  font-size: 22px;
+  font-weight: 600;
+}
+.sub-header{
+  font-size: 18px;
+  margin-top: 8px;
+}
+
+/**************************
+| Modals             |
+**************************/
+
+.modalClose{
+  float:right
+}
+
+.modal-wrapper {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-bottom: 1px solid lightgray;
+  font-size: 18px;
+}
+
+.modal-body {
+  padding : 20px;
+  text-align: center;
 }

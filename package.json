@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.0.2",
+    "react-bootstrap": "^2.0.0-beta.4",
+    "react-modal": "^3.14.3",
+    "react-visibility-sensor": "^5.1.1"
+  }
+}
