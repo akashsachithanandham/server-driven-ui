@@ -10,7 +10,7 @@ const GeneralInfo = props => {
   } = content || {};
 
   return (
-    <div className='general-info'>
+    <div className='doctor-card-general-info'>
       {body_line_1 && <p>{body_line_1}</p>}
       {body_line_2 && <p>{body_line_2}</p>}
       {body_line_3 && <p>{body_line_3}</p>}
