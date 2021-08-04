@@ -78,23 +78,27 @@ export const FilterComponent = (props) => {
             transform: 'translate(-50%, -50%)',
             height: '50%',
             width: '80%',
-            padding : '0px'
+            padding: '0px'
         },
     };
 
 
     return (
         <div>
-            <div className="filterCTAs">
-                <div className="filterCTA">
-                    <button onClick={(e) => handleOpen(interaction_props, "first_cta", e)}>
-                        {content.first_cta_text}
-                    </button>
+            <div className="filter-wrapper">
+
+                <div className="filter-cta">
+                    <div onClick={(e) => handleOpen(interaction_props, "first_cta", e)}>
+                        {content.first_cta_text} ↓
+                    </div>
                 </div>
-                <div className="filterCTA">
-                    <button onClick={(e) => handleOpen(interaction_props, "second_cta", e)}>
-                        {content.second_cta_text}</button>
+
+                <div className="filter-cta">
+                    <div onClick={(e) => handleOpen(interaction_props, "second_cta", e)}>
+                        {content.second_cta_text} ↓
+                    </div>
                 </div>
+
             </div>
 
             <Modal
@@ -104,8 +108,8 @@ export const FilterComponent = (props) => {
                 contentLabel="Example Modal"
             >
                 <div className='modal-wrapper'>
-                <p>Modal</p>
-                <div className="modalClose" onClick={(e) => handleClose(interaction_props, e)}> ❌</div>
+                    <p>Modal</p>
+                    <div className="modalClose" onClick={(e) => handleClose(interaction_props, e)}> ❌</div>
                 </div>
                 <div className='modal-body'>
                     {whichCta} CTA
@@ -114,4 +118,4 @@ export const FilterComponent = (props) => {
         </div>
     )
 }
-export default FilterComponent
+export default FilterComponent;
