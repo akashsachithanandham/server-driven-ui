@@ -1,5 +1,6 @@
 import React from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
+import '../../styles/DoctorCard.css'
 
 import Cta from './Cta';
 import GeneralInfo from './GeneralInfo';
@@ -94,6 +95,7 @@ const DoctorCard = props => {
           content={header_props}
           handleClick={headerSectionClickHandler.bind(null, interaction_props)}
         />
+        
         <hr className='doctor-card-general-info__separator' />
 
         <GeneralInfo content={general_info_props} />

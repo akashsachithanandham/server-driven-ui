@@ -1,0 +1,18 @@
+.doctor-card-header .profile-img {
+  width: 30%;
+}
+
+.doctor-card-header .info {
+  width: 60%;
+  padding-left: 10px;
+}
+
+.doctor-card-header .icon {
+  width: 10%;
+  text-align: center;
+}
+
+.doctor-card-header .icon img {
+  height: 20px;
+  width: 20px;
+}
