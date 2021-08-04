@@ -89,12 +89,15 @@ const DoctorCard = props => {
   return (
     <VisibilitySensor {...sensor_props}>
       <div className='doctor-card-wrapper'>
+
         <Header
           content={header_props}
           handleClick={headerSectionClickHandler.bind(null, interaction_props)}
         />
         <hr className='doctor-card-general-info__separator' />
+
         <GeneralInfo content={general_info_props} />
+
         <Cta
           content={cta_props}
           handleClick={primaryCtaClickHandler.bind(null, interaction_props)}

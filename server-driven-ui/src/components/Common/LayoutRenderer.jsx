@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import RenderElement from './RenderElement';
 import { section_type } from '../../constants/misc';
 
-const Body = props => {
+const LayoutRenderer = props => {
   const { data, sections } = props;
 
   const { type, section_details } = data;
@@ -41,9 +41,9 @@ const Body = props => {
   }
 }
 
-Body.propTypes = {
+LayoutRenderer.propTypes = {
   data: PropTypes.object,
   sections: PropTypes.array
 }
 
-export default Body
+export default LayoutRenderer;

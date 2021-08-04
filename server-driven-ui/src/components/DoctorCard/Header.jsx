@@ -28,7 +28,7 @@ const Header = props => {
         <p dangerouslySetInnerHTML={getMarkUp(header_line_2)} />
       </div>
 
-      {/* Right navigation */}
+      {/* Icon */}
       <div style={{ width: "10%", textAlign: 'center' }}>
         <img src={assets_urls.right_icon} height='20px' width='20px' alt="right icon" />
       </div>
