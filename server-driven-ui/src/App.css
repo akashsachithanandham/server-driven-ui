@@ -1,3 +1,6 @@
+/**************************
+| Utils                   |
+**************************/
 
 .u-d-flex {
   display: flex;
@@ -10,6 +13,30 @@
 .body-wrapper {
   display: flex;
   flex-direction: column;
+}
+
+/**************************
+| Util Components         |
+**************************/
+
+.cta {
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 50%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.cta, .primary {
+  background: #0098ec;
+  border: 1px solid #0098ec;
+}
+
+.cta, .secondary {
+  background: #8a45e5;
+  border: 1px solid #8a45e5;
 }
 
 /**************************
@@ -52,60 +79,17 @@
 | Filters                 |
 **************************/
 
-.filterCTAs {
-  border: 3px solid grey;
-  overflow: hidden; 
-  padding:10px; 
-  margin-top:10px; 
-  height:auto; 
-  background-color:#f9f9f9;
-}
-
-.filterCTA {
-  float: left;
-  margin-left: 15px;
-  margin-right: 15px;
-}  
-
-/**************************
-| Doctor Card             |
-**************************/
-
-.doctor-card-wrapper {
-  margin: 20px;
-  box-shadow: 2px 3px 20px rgba(0,0,0,0.25);
-  padding : 12px;
-  border-radius: 8px;
-  line-height: 1.2;
-}
-
-.doctor-card-wrapper .title {
-  font-size: 20px;
-  font-weight: 650;
-  letter-spacing: 1.6;
-  line-height: 1.2;
-}
-
-.doctor-card-wrapper .general-info {
-  margin: 16px 0px;
+.filter-wrapper {
+  border: 1px solid lightgray;
   display: flex;
-  flex-direction: column;
-  gap: 3px; 
+  padding : 16px 20px;
+  gap : 12px;
 }
 
-.doctor-card-wrapper .consult-cta {
-  border: none;
-  color: white;
-  background: #28328c;
-  padding: 12px 20px;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.doctor-card-general-info__separator {
-  background-color: rgb(131, 125, 125);
-  border-top: 0px;
+.filter-cta {
+  border: 1px solid lightgray;
+  padding : 8px 16px;
+  border-radius: 16px;
 }
 
 /**************************

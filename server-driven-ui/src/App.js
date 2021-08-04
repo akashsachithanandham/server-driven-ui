@@ -7,7 +7,6 @@ function App() {
   const [res, setRes] = useState(null);
 
   useEffect(() => {
-    // Fetching mock data
     const fetchMockData = async () => {
       try {
         const mock_response = await fetch(url);
@@ -15,13 +14,12 @@ function App() {
         setRes(res);
       }
       catch (err) {
-        console.warn("Failed fetching : ", url);
-        console.error(err);
+        console.warn("Failed fetching : ", url, err);
       }
     }
 
     fetchMockData();
-  }, [])
+  }, []);
 
   if (!res) {
     return null;

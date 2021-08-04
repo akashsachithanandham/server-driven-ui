@@ -5,9 +5,9 @@ const Cta = props => {
   const { primary_cta_text } = content || {};
 
   return (
-    <div className='cta'>
+    <div className='doctor-card-cta-wrapper'>
       <button
-        className='consult-cta'
+        className='cta primary'
         onClick={handleClick}
       >
         {primary_cta_text}
